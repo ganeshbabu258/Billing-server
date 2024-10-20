@@ -45,7 +45,7 @@ client.connect((err) => {
 app.post("/save-billing", (req, res) => {
   const { billTo, billToEmail, billToAddress, total } = req.body;
 
-  const sql = INSERT INTO customers (name, email, address, total) VALUES ($1, $2, $3, $4);
+  const sql = `INSERT INTO customers (name, email, address, total) VALUES ($1, $2, $3, $4)`;
 
   client.query(sql, [billTo, billToEmail, billToAddress, total], (err, result) => {
     if (err) {
